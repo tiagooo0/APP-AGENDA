@@ -1,23 +1,60 @@
-//Todo lo relacionado con express (módulos, middlewares, configuraciones etc)
-
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const app = express();
 const myRouter = require('./routes/myRouter');
+const Evento = require("./models/EventoModel.js")
 
-//Defino el motor de plantillas a utilizar
+// Defino el motor de plantillas a utilizar
 app.set('view engine', 'ejs');
-//Defino la localización de mis vistas
+
+// Defino la localización de mis vistas
 app.set('views', path.join(__dirname, 'views'));
 
-//Middlewares
-app.use(morgan('dev'));
-//Middleware para poder obtener data de los requests con BodyParser
-app.use(express.json());
-//Configurando archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+// Middlewares
+app.use(morgan('dev')); // Middleware para el registro de solicitudes HTTP
+app.use(express.json()); // Middleware para obtener datos de las solicitudes con BodyParser
+app.use(express.static(path.join(__dirname, 'public'))); // Configurando archivos estáticos
 
-//Agrego un enrutador compatible
+// Agrego un enrutador compatible
 app.use('/', myRouter);
 module.exports = app;
+
+
+   //  Consulta todos los eventos y los imprime en la consola
+Evento.find()
+.then((eventos) => {
+    console.log("Eventos encontrados:", eventos);
+})
+.catch((error) => {
+    console.log("Error al consultar eventos:", error);
+});
+
+// Insertar un evento en la base de datos
+/*
+const nuevoEvento = new Evento({
+    titulo: "TITULO DE GIAMBA",
+    descripcion: "ME GUSTAS GIAMBA",
+    date: new Date(),
+});
+
+nuevoEvento
+    .save()
+    .then((eventoGuardado) => {
+        console.log("Evento guardado:", eventoGuardado);
+    })
+    .catch((error) => {
+        console.log("Error al guardar el evento:", error);
+    });
+*/
+
+//   Eliminar un evento de la base de datos
+/*(async () => {
+    try {
+        const deletedEvento = await Evento.deleteOne({ titulo: "prueba evento" });
+        console.log('Evento eliminado:', deletedEvento);
+    } catch (err) {
+        console.log(err);
+    }
+});
+*/
