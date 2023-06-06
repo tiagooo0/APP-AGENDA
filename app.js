@@ -31,22 +31,8 @@ Evento.find()
 });
 
 // Insertar un evento en la base de datos
-/*
-const nuevoEvento = new Evento({
-    titulo: "TITULO DE GIAMBA",
-    descripcion: "ME GUSTAS GIAMBA",
-    date: new Date(),
-});
 
-nuevoEvento
-    .save()
-    .then((eventoGuardado) => {
-        console.log("Evento guardado:", eventoGuardado);
-    })
-    .catch((error) => {
-        console.log("Error al guardar el evento:", error);
-    });
-*/
+
 
 //   Eliminar un evento de la base de datos
 /*(async () => {
