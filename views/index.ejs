@@ -10,15 +10,18 @@
   <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
-  <h1>
-    <ul>
+  
       <% eventos.forEach((Evento) => { %>
-      <li><%= Evento.titulo %></li>
-      <li><%= Evento.descripcion %></li>
-      <li><%= Evento.date %></li>
+        <div class="card text-bg-dark mb-3 card border-light mb-3"  id= "cardsEvents" style="max-width: 18rem;">
+          <div class="card-header"> <%= Evento.date %> </div>
+          <div class="card-body">
+            <h5 class="card-title"> <%= Evento.titulo %> </h5>
+            <p class="card-text"> <%= Evento.descripcion %> </p>
+            <small class="text-body-secondary"> <%= Evento.date %> </small>
+          </div>
+        </div>
       <% }) %>
-    </ul>
-  </h1>
+    
 
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -34,18 +37,18 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="/eventos" method="POST" id="newForm">
             <label for="titulo"> Titulo:</label><br>
             <input type="text" id="titulo" name="titulo"><br>
             <label for="descripcion"> Descripcion:</label><br>
             <input type="text" id="descripcion" name="descripcion"><br>
             <label for="date"> Hora:</label><br>
-            <input type="text" id="date" name="date"><br>
+            <input type="date" id="date" name="date"><br>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" id="saveChangesBtn">Save changes</button>
+          <button type="submit" class="btn btn-primary" id="guardar">Guardar</button>
         </div>
       </div>
     </div>
