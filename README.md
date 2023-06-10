@@ -43,7 +43,7 @@ router.get("/evento/:id", myController.getEventoById);
 
 router.post("/evento/:id/editar", myController.updateEvento);
 
-router.delete("/evento/:id", myController.deleteEvento);
+
 
 
 
@@ -113,14 +113,3 @@ exports.updateEvento = (req, res) => {
     );
 };
 
-exports.deleteEvento = (req, res) => {
-    const eventoId = req.params.id;
-    Evento.findByIdAndRemove(eventoId, (err, evento) => {
-    if (err) {
-        console.error("Error al eliminar el evento:");
-        res.status(500).json({ error: "Error al eliminar el evento" });
-    } else {
-        res.redirect("/eventos");
-    }
-    });
-};

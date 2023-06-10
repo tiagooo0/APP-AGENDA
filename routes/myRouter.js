@@ -5,9 +5,6 @@ const Evento = require("../models/EventoModel");
 
 
 //Defino rutas y acciones de respuesta
-//router.route('/').get(myController.inicio);
-
-//module.exports = router;
 router.get('/', async (req, res) => {
     try {
       // Consulta todos los eventos y los guarda en la variable eventos
@@ -21,6 +18,8 @@ router.get('/', async (req, res) => {
     }
   });
   
-  router.post("/evento", myController.createEvento);
+router.post("/evento", myController.createEvento);
+
+router.delete("/delEvento/:titulo", myController.deleteEvento);
 module.exports = router;
   

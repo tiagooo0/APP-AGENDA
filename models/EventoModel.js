@@ -12,7 +12,7 @@ const EventoSchema = new mongoose.Schema({
         require : true
     },
     date: {
-        type: Date,
+        type: String,
         require : true
     },
 });
