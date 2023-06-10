@@ -1,4 +1,5 @@
 const express = require('express');
+const methodOverride = require("method-override");
 const path = require('path');
 const morgan = require('morgan');
 const app = express();
@@ -15,6 +16,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(morgan('dev')); // Middleware para el registro de solicitudes HTTP
 app.use(express.json()); // Middleware para obtener datos de las solicitudes con BodyParser
 app.use(express.static(path.join(__dirname, 'public'))); // Configurando archivos estáticos
+app.use(methodOverride("_method"));//Middleware para solicitudes POST se conviertan en otros métodos HTTP
 
 // Agrego un enrutador compatible
 app.use('/', myRouter);

@@ -35,3 +35,4 @@ function sendData() {
   };
   xhr.send(JSON.stringify(formData));
 }
+

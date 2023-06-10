@@ -21,5 +21,6 @@ router.get('/', async (req, res) => {
 router.post("/evento", myController.createEvento);
 
 router.delete("/delEvento/:titulo", myController.deleteEvento);
+router.post("/evento/:titulo/edit", myController.updateEvento);
 module.exports = router;
   

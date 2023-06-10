@@ -17,9 +17,14 @@
           <div class="card-body">
             <h5 class="card-title"> <%= Evento.titulo %> </h5>
             <p class="card-text"> <%= Evento.descripcion %> </p>
-            <small class="text-body-secondary"> <%= Evento.date %> </small>
+            <small class="text-body-secondary" id="Date"> <%= Evento.date %> </small>
           </div>
         </div>
+        <form action="/delEvento/<%= Evento.titulo %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn5" type="submit">X</button>
+        </form>
+        
       <% }) %>
     
 
